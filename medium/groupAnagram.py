@@ -1,26 +1,17 @@
-def sortWord(word):
-    return ''.join(sorted(word))
-
-
+from collections import defaultdict
+# Time : O(mnlogn)
+# Space : O(mn)
 def groupAnagram(strs):
-    sortedStrs = list(map(sortWord,strs))
-    print(sortedStrs)
-    resultIndex = list()
-    i = 0
-    while i < len(sortedStrs):
-        j=0
-        while j < len(sortedStrs):
-            # print(sortedStrs[i], i, j, len(sortedStrs))
-            if sortedStrs[i] == sortedStrs[j]:
-                resultIndex.append(j)
-            j +=1
-        i +=1
-        
+    anagram_map = defaultdict(list)
 
-    print(resultIndex)
+    for word in strs:
+        sorted_word = ''.join(sorted(word))
+        anagram_map[sorted_word].append(word)
+    
+    print(anagram_map.values())
+    return list(anagram_map.values())
 
 
 
-    return True
 
 groupAnagram(["eat","tea","tan","ate","nat","bat"])
