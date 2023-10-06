@@ -3,16 +3,20 @@ def productExceptSelf(nums):
         :type nums: List[int]
         :rtype: List[int]
         """
-        prefix = list()
-        postfix = list()
-        result = list()
-        total = 1
-        for num in nums:
-            total = total * num
-            prefix.append(total)
-            
+        n = len(nums)
+        prefix = 1
+        postfix = 1
+        result = [0]*n
+        for i in range(n):
+            result[i] = prefix
+            prefix *= nums[i]
+  
+        for i in range(n-1,-1,-1):
+            result[i] *= postfix
+            postfix *= nums[i]
+              
 
-        print(prefix)
+        print(result)
         return result
             
             
